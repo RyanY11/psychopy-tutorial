@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark" data-light-theme="light" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
+    
+    <link rel="icon" href="https://github.githubassets.com/favicons/favicon.svg"><script>
+        let theme = localStorage.getItem("meek_theme") || "light";
+        document.documentElement.setAttribute("data-color-mode", theme);
+    </script>
+<meta name="description" content="# 一、关于PsychoPy
+PsychoPy 是一款功能强大的开源软件，专门用于心理学、神经科学和相关领域的研究。">
+<meta property="og:title" content="Part1 · PsychoPy简介及安装">
+<meta property="og:description" content="# 一、关于PsychoPy
+PsychoPy 是一款功能强大的开源软件，专门用于心理学、神经科学和相关领域的研究。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://RyanY11.github.io/ryan.github.io/post/Part1%20%C2%B7%20PsychoPy-jian-jie-ji-an-zhuang.html">
+<meta property="og:image" content="https://github.githubassets.com/favicons/favicon.svg">
+<title>Part1 · PsychoPy简介及安装</title>
+
+
+
+</head>
+<style>
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
+#footer {margin-top:64px; text-align: center;font-size: small;}
+
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+
+</style>
+
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">Part1 · PsychoPy简介及安装</h1>
+<div class="title-right">
+    <a href="https://RyanY11.github.io/ryan.github.io" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+    <a href="https://github.com/RyanY11/ryan.github.io/issues/1" target="_blank" class="btn btn-invisible circle" title="Issue">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathIssue" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><h1>一、关于PsychoPy</h1>
+<p>PsychoPy 是一款功能强大的开源软件，专门用于心理学、神经科学和相关领域的研究。它由英国诺丁汉大学的 Jonathan Peirce 教授团队从开发，旨在为研究者提供一个灵活、免费、易用且功能强大的平台，用于创建和控制各种类型的实验任务。PsychoPy迄今已更新超过20年，在经历过一百多个版本的迭代后，在全世界各高校和研究机构中有众多用户。<br>
+在本教程中，将基于2024年最新发布的2024.2.4版本进行讲解。</p>
+<h2>（一）PsychoPy 的优势与特点</h2>
+<ul>
+<li>开源免费：PsychoPy 完全开源且免费，大大降低了科研成本。且PsychoPy 使用GPL-3.0协议，任何用户都可以自由使用、修改和分发，也能很方便的找到源码，便于深入学习了解其后的详细设计。</li>
+<li>跨平台：PsychoPy 跨平台支持 Windows、macOS 和 Linux 操作系统，方便研究人员在不同的平台上进行实验设计和运行。</li>
+<li>易于使用：PsychoPy 提供了图形化界面（Builder 视图）和代码界面（Coder 视图）两种操作方式。即使没有编程经验的用户也可以通过 Builder 视图快速创建简单的实验。对于需要更高级定制的实验，可以使用 Coder 视图编写 Python 代码。</li>
+<li>精确的时序控制：PsychoPy 能够提供精确到毫秒级别的时间控制，这对于需要精确测量反应时和刺激呈现时间的心理学实验至关重要。</li>
+<li>丰富、灵活的刺激呈现功能：PsychoPy 支持呈现各种类型的刺激，包括图像、文本、声音和视频等。它还支持使用 OpenGL 进行高级图形渲染，可以创建复杂的视觉刺激。</li>
+<li>与其他 Python 库的良好兼容性：PsychoPy 可以与 NumPy、Matplotlib、Pandas 和 SciPy 等其他常用的 Python 科学计算库无缝集成，方便进行数据分析和处理。</li>
+<li>可扩展性：PsychoPy可以兼容一系列研究硬件，如EEG、fMRI、眼动仪、反应盒、麦克风、多个显示器等</li>
+<li>在线和离线实验：使用 PsychoPy 既可以创建传统的实验室实验，也能方便地生成在线实验，在在线实验平台上运行，以满足不同的研究需求。</li>
+<li>丰富的学习材料和活跃的社区支持：Jonathan Peirce 教授团队目前已撰写了两版教材《Building Experiments in PsychoPy》，在<a href="https://www.psychopy.org/PsychoPyManual.pdf" rel="nofollow">官网</a>也有详细的说明文档，以及一个活跃的<a href="https://discourse.psychopy.org/" rel="nofollow">用户社区</a>，方便使用者寻求帮助和分享经验。</li>
+</ul>
+<h2>（二）如何获取 PsychoPy</h2>
+<p>通常情况下，可以从 PsychoPy 的<a href="https://psychopy.org/" rel="nofollow">官方网站</a>上Download标签页下载到最新版本的 PsychoPy，也可以从 PsychoPy项目的<a href="https://github.com/psychopy/psychopy/releases">GitHub仓库</a>中找到特定版本的PsychoPy下载。<br>
+有时候可能从官网下载会出现下载慢或者连接失败的情况，如果无法从官网顺利下载，本教程配套的线上资源中也为大家准备了一些常用版本的PsychoPy，方便下载使用。</p>
+<h1>二、PsychoPy的安装</h1>
+<p>本部分将详细介绍如何在不同的操作系统上安装 PsychoPy。<br>
+PsychoPy 的安装相对简单，但根据你的操作系统和 Python 环境，可能需要选择不同的安装方法。</p>
+<h3>1.通过独立安装包</h3>
+<p>对于大多数用户来说，推荐使用 PsychoPy 官方提供的独立安装包。这种方式最为简单快捷，无需配置 Python 环境，适合初学者。<br>
+独立安装包中打包好了一整套Python环境，以及支持PsychoPy各项功能的Python库，开箱即用，并且会在应用列表里直接添加PsychoPy，因此安装好之后可以像运行一个独立软件一样，点击即打开PsychoPy的界面。<br>
+如果不需要考虑运行旧版本的PsychoPy `实验程序，可以在官网的<a href="https://www.psychopy.org/download.html" rel="nofollow">Download页面</a>上下载你使用的操作系统（Windows、MacOS或Linux）所对应的modern独立安装包（使用的Python版本为3.10.11）。</p>
+<p>双击下载的安装包，按照提示步骤进行安装。<br>
+在 Windows 系统上，你可能需要以管理员身份运行安装程序。安装完成后，即可以在开始菜单（Windows）或应用程序文件夹（macOS）中找到 PsychoPy的图标。</p>
+<h3>2.通过pip安装</h3>
+<p>由于PsychoPy本质是一个基于Python编写的库，所以可以在先在电脑上安装Python环境之后，通过pip install的方式来安装。<br>
+通常来说，建议电脑上已安装的Python版本为3.10或3.8，使用其它的版本有可能会遇到不能正常安装或运行的问题。<br>
+已经准备好合适的Python环境后，可以通过以下语句来安装最新版的PsychoPy：<br>
+<code class="notranslate">pip install psychopy</code><br>
+如果需要安装特定版本的PsychoPy，可以通过以下语句来指定版本：<br>
+<code class="notranslate">pip install psychopy==2024.2.4</code><br>
+安装特定版本的前提是输入的版本号是正确的，可以在GitHub上查找你想要的<a href="https://github.com/psychopy/psychopy/releases">具体版本</a>。</p>
+<p>Tips：<br>
+考虑到PsychoPy所依赖的众多Python库有可能与你已在其它项目中使用的某些库存在版本冲突的情况（例如，项目 A 需要使用numpy的 1.19 版本，而项目 B 需要使用numpy的 1.21 版本），建议通过Conda(Anaconda) / virtualenv / venv甚至pyenv等工具创建虚拟环境，再在这个虚拟环境中单独配置PsychoPy，这样能更好的完成环境的隔离与保护。</p>
+<h3>3.其它安装方式</h3>
+<p>在Linux上也需要通过先配置Python环境再pip install的方式安装PsychoPy，而在MacOS上，还可以通过brew install的方式安装PsychoPy。<br>
+这些安装方式在官网上有<a href="https://www.psychopy.org/download.html" rel="nofollow">更加详细的说明</a>，可以参考。</p></div>
+<div style="font-size:small;margin-top:8px;float:right;"></div>
+
+<button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
+<div class="comments" id="comments"></div>
+
+</div>
+    <div id="footer"><div id="footer1">Copyright © <span id="copyrightYear"></span> <a href="https://RyanY11.github.io/ryan.github.io">Blog Title</a></div>
+<div id="footer2">
+    <span id="runday"></span><span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a></span>
+</div>
+
+<script>
+var now=new Date();
+document.getElementById("copyrightYear").innerHTML=now.getFullYear();
+
+if(""!=""){
+    var startSite=new Date("");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" • ";
+}
+</script></div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z'};
+var utterancesLoad=0;
+
+let themeSettings={
+    "dark": ["dark","moon","#00f0ff","dark-blue"],
+    "light": ["light","sun","#ff5000","github-light"],
+    "auto": ["auto","sync","","preferred-color-scheme"]
+};
+function changeTheme(mode, icon, color, utheme){
+    document.documentElement.setAttribute("data-color-mode",mode);
+    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
+    document.getElementById("themeSwitch").parentNode.style.color=color;
+    if(utterancesLoad==1){utterancesTheme(utheme);}
+}
+function modeSwitch(){
+    let currentMode=document.documentElement.getAttribute('data-color-mode');
+    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
+    localStorage.setItem("meek_theme", newMode);
+    if(themeSettings[newMode]){
+        changeTheme(...themeSettings[newMode]);
+    }
+}
+function utterancesTheme(theme){
+    const message={type:'set-theme',theme: theme};
+    const iframe=document.getElementsByClassName('utterances-frame')[0];
+    iframe.contentWindow.postMessage(message,'https://utteranc.es');
+}
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
+console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+
+
+function openComments(){
+    cm=document.getElementById("comments");
+    cmButton=document.getElementById("cmButton");
+    cmButton.innerHTML="loading";
+    span=document.createElement("span");
+    span.setAttribute("class","AnimatedEllipsis");
+    cmButton.appendChild(span);
+
+    script=document.createElement("script");
+    script.setAttribute("src","https://utteranc.es/client.js");
+    script.setAttribute("repo","RyanY11/ryan.github.io");
+    script.setAttribute("issue-term","title");
+    
+    if(localStorage.getItem("meek_theme")=="dark"){script.setAttribute("theme","dark-blue");}
+    else if(localStorage.getItem("meek_theme")=="light") {script.setAttribute("theme","github-light");}
+    else{script.setAttribute("theme","preferred-color-scheme");}
+    
+    script.setAttribute("crossorigin","anonymous");
+    script.setAttribute("async","");
+    cm.appendChild(script);
+
+    int=self.setInterval("iFrameLoading()",200);
+}
+
+function iFrameLoading(){
+    var utterances=document.getElementsByClassName('utterances');
+    if(utterances.length==1){
+        if(utterances[0].style.height!=""){
+            utterancesLoad=1;
+            int=window.clearInterval(int);
+            document.getElementById("cmButton").style.display="none";
+            console.log("utterances Load OK");
+        }
+    }
+}
+
+
+
+</script>
+
+
+</html>
