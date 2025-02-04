@@ -63,3 +63,5 @@ pip install psychopy==2024.2.4
 在Linux 上也需要通过先配置Python 环境再*pip install*的方式安装PsychoPy ，而在MacOS上，还可以通过*brew install*的方式安装PsychoPy。
 
 这些安装方式在官网上有[更加详细的说明](https://www.psychopy.org/download.html)，可以参考。
+
+<!-- ##{"timestamp":1739558331}## -->
