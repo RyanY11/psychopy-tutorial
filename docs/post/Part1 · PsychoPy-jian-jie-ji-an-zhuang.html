@@ -19,7 +19,7 @@ PsychoPy 是一款功能强大的开源软件，专门用于心理学、神经�
 <meta property="og:url" content="https://RyanY11.github.io/ryan.github.io/post/Part1%20%C2%B7%20PsychoPy-jian-jie-ji-an-zhuang.html">
 <meta property="og:image" content="https://avatars.githubusercontent.com/u/36234986?v=4">
 <title>Part1 · PsychoPy简介及安装</title>
-
+<link href="//unpkg.com/@wooorm/starry-night@2.1.1/style/both.css" rel="stylesheet" />
 
 
 </head>
@@ -43,9 +43,19 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
     body {padding: 8px;}
     .postTitle{font-size:24px;}
 }
-
+.copy-feedback {
+    display: none;
+    position: absolute;
+    top: 10px;
+    right: 50px;
+    color: var(--color-fg-on-emphasis);
+    background-color: var(--color-fg-muted);
+    border-radius: 3px;
+    padding: 5px 8px;
+    font-size: 12px;
+}
 </style>
-
+<style>.markdown-alert{padding:0.5rem 1rem;margin-bottom:1rem;border-left:.25em solid var(--borderColor-default,var(--color-border-default));}.markdown-alert .markdown-alert-title {display:flex;font-weight:var(--base-text-weight-medium,500);align-items:center;line-height:1;}.markdown-alert>:first-child {margin-top:0;}.markdown-alert>:last-child {margin-bottom:0;}</style><style>.markdown-alert.markdown-alert-tip {border-left-color:var(--borderColor-success-emphasis, var(--color-success-emphasis));background-color:var(--color-success-subtle);}.markdown-alert.markdown-alert-tip .markdown-alert-title {color: var(--fgColor-success,var(--color-success-fg));}</style>
 
 
 
@@ -59,7 +69,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
         </svg>
     </a>
     
-    <a href="https://github.com/RyanY11/ryan.github.io/issues/1" target="_blank" class="btn btn-invisible circle" title="Issue">
+    <a href="https://github.com/RyanY11/psychopy-tutorial/issues/1" target="_blank" class="btn btn-invisible circle" title="Issue">
         <svg class="octicon" width="16" height="16">
             <path id="pathIssue" fill-rule="evenodd"></path>
         </svg>
@@ -76,45 +86,45 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
     <div id="content">
 <div class="markdown-body" id="postBody"><h1>一、关于PsychoPy</h1>
-<p>PsychoPy 是一款功能强大的开源软件，专门用于心理学、神经科学和相关领域的研究。它由英国诺丁汉大学的 Jonathan Peirce 教授团队从开发，旨在为研究者提供一个灵活、免费、易用且功能强大的平台，用于创建和控制各种类型的实验任务。PsychoPy迄今已更新超过20年，在经历过一百多个版本的迭代后，在全世界各高校和研究机构中有众多用户。<br>
-在本教程中，将基于2024年最新发布的2024.2.4版本进行讲解。</p>
+<p>PsychoPy 是一款功能强大的开源软件，专门用于心理学、神经科学和相关领域的研究。它由英国诺丁汉大学的 Jonathan Peirce 教授团队从开发，旨在为研究者提供一个灵活、免费、易用且功能强大的平台，用于创建和控制各种类型的实验任务。</p>
+<p>PsychoPy 迄今已更新超过20年，在经历过一百多个版本的迭代后，在全世界各高校和研究机构中有众多用户。</p>
+<p>在本教程中，将基于2024年最新发布的 <em><strong>2024.2.4</strong></em> 版本进行讲解。</p>
 <h2>（一）PsychoPy 的优势与特点</h2>
 <ul>
-<li>开源免费：PsychoPy 完全开源且免费，大大降低了科研成本。且PsychoPy 使用GPL-3.0协议，任何用户都可以自由使用、修改和分发，也能很方便的找到源码，便于深入学习了解其后的详细设计。</li>
-<li>跨平台：PsychoPy 跨平台支持 Windows、macOS 和 Linux 操作系统，方便研究人员在不同的平台上进行实验设计和运行。</li>
-<li>易于使用：PsychoPy 提供了图形化界面（Builder 视图）和代码界面（Coder 视图）两种操作方式。即使没有编程经验的用户也可以通过 Builder 视图快速创建简单的实验。对于需要更高级定制的实验，可以使用 Coder 视图编写 Python 代码。</li>
-<li>精确的时序控制：PsychoPy 能够提供精确到毫秒级别的时间控制，这对于需要精确测量反应时和刺激呈现时间的心理学实验至关重要。</li>
-<li>丰富、灵活的刺激呈现功能：PsychoPy 支持呈现各种类型的刺激，包括图像、文本、声音和视频等。它还支持使用 OpenGL 进行高级图形渲染，可以创建复杂的视觉刺激。</li>
-<li>与其他 Python 库的良好兼容性：PsychoPy 可以与 NumPy、Matplotlib、Pandas 和 SciPy 等其他常用的 Python 科学计算库无缝集成，方便进行数据分析和处理。</li>
-<li>可扩展性：PsychoPy可以兼容一系列研究硬件，如EEG、fMRI、眼动仪、反应盒、麦克风、多个显示器等</li>
-<li>在线和离线实验：使用 PsychoPy 既可以创建传统的实验室实验，也能方便地生成在线实验，在在线实验平台上运行，以满足不同的研究需求。</li>
-<li>丰富的学习材料和活跃的社区支持：Jonathan Peirce 教授团队目前已撰写了两版教材《Building Experiments in PsychoPy》，在<a href="https://www.psychopy.org/PsychoPyManual.pdf" rel="nofollow">官网</a>也有详细的说明文档，以及一个活跃的<a href="https://discourse.psychopy.org/" rel="nofollow">用户社区</a>，方便使用者寻求帮助和分享经验。</li>
+<li><strong>开源免费</strong>：PsychoPy 完全开源且免费，大大降低了科研成本。且PsychoPy 使用GPL-3.0协议，任何用户都可以自由使用、修改和分发，也能很方便的找到源码，便于深入学习了解其后的详细设计。</li>
+<li><strong>跨平台</strong>：PsychoPy 跨平台支持 Windows、macOS 和 Linux 操作系统，方便研究人员在不同的平台上进行实验设计和运行。</li>
+<li><strong>易于使用</strong>：PsychoPy 提供了图形化界面（Builder 视图）和代码界面（Coder 视图）两种操作方式。即使没有编程经验的用户也可以通过 Builder 视图快速创建简单的实验。对于需要更高级定制的实验，可以使用 Coder 视图编写 Python 代码。</li>
+<li><strong>精确的时序控制</strong>：PsychoPy 能够提供精确到毫秒级别的时间控制，这对于需要精确测量反应时和刺激呈现时间的心理学实验至关重要。</li>
+<li><strong>丰富、灵活的刺激呈现功能</strong>：PsychoPy 支持呈现各种类型的刺激，包括图像、文本、声音和视频等。它还支持使用 OpenGL 进行高级图形渲染，可以创建复杂的视觉刺激。</li>
+<li><strong>与其他 Python 库的良好兼容性</strong>：PsychoPy 可以与 NumPy、Matplotlib、Pandas 和 SciPy 等其他常用的 Python 科学计算库无缝集成，方便进行数据分析和处理。</li>
+<li><strong>可扩展性</strong>：PsychoPy可以兼容一系列研究硬件，如EEG、fMRI、眼动仪、反应盒、麦克风、多个显示器等</li>
+<li><strong>在线和离线实验</strong>：使用 PsychoPy 既可以创建传统的实验室实验，也能方便地生成在线实验，在在线实验平台上运行，以满足不同的研究需求。</li>
+<li><strong>丰富的学习材料和活跃的社区支持</strong>：Jonathan Peirce 教授团队目前已撰写了两版教材《Building Experiments in PsychoPy》，在<a href="https://www.psychopy.org/PsychoPyManual.pdf" rel="nofollow">官网</a>也有详细的说明文档，以及一个活跃的<a href="https://discourse.psychopy.org/" rel="nofollow">用户社区</a>，方便使用者寻求帮助和分享经验。</li>
 </ul>
 <h2>（二）如何获取 PsychoPy</h2>
-<p>通常情况下，可以从 PsychoPy 的<a href="https://psychopy.org/" rel="nofollow">官方网站</a>上Download标签页下载到最新版本的 PsychoPy，也可以从 PsychoPy项目的<a href="https://github.com/psychopy/psychopy/releases">GitHub仓库</a>中找到特定版本的PsychoPy下载。<br>
-有时候可能从官网下载会出现下载慢或者连接失败的情况，如果无法从官网顺利下载，本教程配套的线上资源中也为大家准备了一些常用版本的PsychoPy，方便下载使用。</p>
+<p>通常情况下，可以从 PsychoPy 的<a href="https://psychopy.org/" rel="nofollow">官方网站</a>上Download标签页下载到最新版本的 PsychoPy ，也可以从 PsychoPy项目的<a href="https://github.com/psychopy/psychopy/releases">GitHub仓库</a>中找到特定版本的PsychoPy 下载。</p>
+<p>有时候可能从官网下载会出现下载慢或者连接失败的情况，如果无法从官网顺利下载，本教程配套的线上资源中也为大家准备了一些常用版本的PsychoPy ，方便下载使用。</p>
 <h1>二、PsychoPy的安装</h1>
-<p>本部分将详细介绍如何在不同的操作系统上安装 PsychoPy。<br>
-PsychoPy 的安装相对简单，但根据你的操作系统和 Python 环境，可能需要选择不同的安装方法。</p>
+<p>PsychoPy 的安装相对简单，但根据你的操作系统和 Python 环境，可能需要选择不同的安装方法。</p>
 <h3>1.通过独立安装包</h3>
-<p>对于大多数用户来说，推荐使用 PsychoPy 官方提供的独立安装包。这种方式最为简单快捷，无需配置 Python 环境，适合初学者。<br>
-独立安装包中打包好了一整套Python环境，以及支持PsychoPy各项功能的Python库，开箱即用，并且会在应用列表里直接添加PsychoPy，因此安装好之后可以像运行一个独立软件一样，点击即打开PsychoPy的界面。<br>
-如果不需要考虑运行旧版本的PsychoPy `实验程序，可以在官网的<a href="https://www.psychopy.org/download.html" rel="nofollow">Download页面</a>上下载你使用的操作系统（Windows、MacOS或Linux）所对应的modern独立安装包（使用的Python版本为3.10.11）。</p>
-<p>双击下载的安装包，按照提示步骤进行安装。<br>
-在 Windows 系统上，你可能需要以管理员身份运行安装程序。安装完成后，即可以在开始菜单（Windows）或应用程序文件夹（macOS）中找到 PsychoPy的图标。</p>
+<p>对于大多数用户来说，推荐使用 PsychoPy 官方提供的独立安装包。这种方式最为简单快捷，无需配置 Python 环境，适合初学者。</p>
+<p>独立安装包中打包好了一整套Python 环境，以及支持PsychoPy 各项功能的Python 库，开箱即用，并且会在应用列表里直接添加PsychoPy，因此安装好之后可以像运行一个独立软件一样，点击即打开PsychoPy 的界面。</p>
+<p>如果不需要考虑运行旧版本的PsychoPy 实验程序，可以在官网的<a href="https://www.psychopy.org/download.html" rel="nofollow">Download页面</a>上下载你使用的操作系统（Windows、MacOS或Linux）所对应的modern 独立安装包（使用的Python版本为3.10.11）。</p>
+<p>双击下载的安装包，按照提示步骤进行安装。</p>
+<p>在 Windows 系统上，你可能需要以管理员身份运行安装程序。安装完成后，即可以在开始菜单（Windows）或应用程序文件夹（macOS）中找到 PsychoPy 的图标。</p>
 <h3>2.通过pip安装</h3>
-<p>由于PsychoPy本质是一个基于Python编写的库，所以可以在先在电脑上安装Python环境之后，通过pip install的方式来安装。<br>
-通常来说，建议电脑上已安装的Python版本为3.10或3.8，使用其它的版本有可能会遇到不能正常安装或运行的问题。<br>
-已经准备好合适的Python环境后，可以通过以下语句来安装最新版的PsychoPy：<br>
-<code class="notranslate">pip install psychopy</code><br>
-如果需要安装特定版本的PsychoPy，可以通过以下语句来指定版本：<br>
-<code class="notranslate">pip install psychopy==2024.2.4</code><br>
-安装特定版本的前提是输入的版本号是正确的，可以在GitHub上查找你想要的<a href="https://github.com/psychopy/psychopy/releases">具体版本</a>。</p>
-<p>Tips：<br>
-考虑到PsychoPy所依赖的众多Python库有可能与你已在其它项目中使用的某些库存在版本冲突的情况（例如，项目 A 需要使用numpy的 1.19 版本，而项目 B 需要使用numpy的 1.21 版本），建议通过Conda(Anaconda) / virtualenv / venv甚至pyenv等工具创建虚拟环境，再在这个虚拟环境中单独配置PsychoPy，这样能更好的完成环境的隔离与保护。</p>
+<p>由于PsychoPy 本质是一个基于Python 编写的库，所以可以在先在电脑上安装Python 环境之后，通过<em>pip install</em>的方式来安装。</p>
+<p>通常来说，建议电脑上已安装的Python 版本为3.10或3.8，使用其它的版本有可能会遇到不能正常安装或运行的问题。</p>
+<p>已经准备好合适的Python 环境后，可以通过以下语句来安装最新版的PsychoPy ：</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">pip install psychopy</pre></div>
+<p>如果需要安装特定版本的PsychoPy ，可以通过以下语句来指定版本：</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">pip install psychopy==2024.2.4</pre></div>
+<p>安装特定版本的前提是输入的版本号是正确的，可以在GitHub 上查找你想要的<a href="https://github.com/psychopy/psychopy/releases">具体版本</a>。</p>
+<div class="markdown-alert markdown-alert-tip"><p class="markdown-alert-title"><svg class="octicon octicon-light-bulb mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>Tip</p><p>考虑到PsychoPy 所依赖的众多Python 库有可能与你已在其它项目中使用的某些库存在版本冲突的情况（例如，项目 A 需要使用numpy的 1.19 版本，而项目 B 需要使用numpy的 1.21 版本），建议通过Conda(Anaconda) / virtualenv / venv甚至pyenv等工具创建虚拟环境，再在这个虚拟环境中单独配置PsychoPy ，这样能更好的完成环境的隔离与保护。</p>
+</div>
 <h3>3.其它安装方式</h3>
-<p>在Linux上也需要通过先配置Python环境再pip install的方式安装PsychoPy，而在MacOS上，还可以通过brew install的方式安装PsychoPy。<br>
-这些安装方式在官网上有<a href="https://www.psychopy.org/download.html" rel="nofollow">更加详细的说明</a>，可以参考。</p></div>
+<p>在Linux 上也需要通过先配置Python 环境再<em>pip install</em>的方式安装PsychoPy ，而在MacOS上，还可以通过<em>brew install</em>的方式安装PsychoPy。</p>
+<p>这些安装方式在官网上有<a href="https://www.psychopy.org/download.html" rel="nofollow">更加详细的说明</a>，可以参考。</p></div>
 <div style="font-size:small;margin-top:8px;float:right;">转载请注明出处</div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
@@ -139,7 +149,7 @@ if(""!=""){
 </script></div>
 </body>
 <script>
-var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z'};
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z', 'copy': 'M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z', 'check': 'M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z'};
 var utterancesLoad=0;
 
 let themeSettings={
@@ -186,7 +196,7 @@ function openComments(){
 
     script=document.createElement("script");
     script.setAttribute("src","https://utteranc.es/client.js");
-    script.setAttribute("repo","RyanY11/ryan.github.io");
+    script.setAttribute("repo","RyanY11/psychopy-tutorial");
     script.setAttribute("issue-term","title");
     
     if(localStorage.getItem("meek_theme")=="dark"){script.setAttribute("theme","dark-blue");}
@@ -212,7 +222,70 @@ function iFrameLoading(){
     }
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+    const createClipboardHTML = (codeContent, additionalClasses = '') => `
+        <pre class="notranslate"><code class="notranslate">${codeContent}</code></pre>
+        <div class="clipboard-container position-absolute right-0 top-0 ${additionalClasses}">
+            <clipboard-copy class="ClipboardButton btn m-2 p-0" role="button" style="display: inherit;">
+                <svg height="16" width="16" class="octicon octicon-copy m-2"><path d="${IconList["copy"]}"></path></svg>
+                <svg height="16" width="16" class="octicon octicon-check color-fg-success m-2 d-none"><path d="${IconList["check"]}"></path></svg>
+            </clipboard-copy>
+            <div class="copy-feedback">Copied!</div>
+        </div>
+    `;
 
+    const handleCodeElements = (selector = '') => {
+        document.querySelectorAll(selector).forEach(codeElement => {
+            const codeContent = codeElement.innerHTML;
+            const newStructure = document.createElement('div');
+            newStructure.className = 'snippet-clipboard-content position-relative overflow-auto';
+            newStructure.innerHTML = createClipboardHTML(codeContent);
+
+            const parentElement = codeElement.parentElement;
+            if (selector.includes('highlight')) {
+                parentElement.insertBefore(newStructure, codeElement.nextSibling);
+                parentElement.removeChild(codeElement);
+            } else {
+                parentElement.parentElement.replaceChild(newStructure, parentElement);
+            }
+        });
+    };
+
+    handleCodeElements('pre.notranslate > code.notranslate');
+    handleCodeElements('div.highlight > pre.notranslate');
+
+    let currentFeedback = null;
+    document.querySelectorAll('clipboard-copy').forEach(copyButton => {
+        copyButton.addEventListener('click', () => {
+            const codeContent = copyButton.closest('.snippet-clipboard-content').innerText;
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = codeContent;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempTextArea);
+
+            const copyIcon = copyButton.querySelector('.octicon-copy');
+            const checkIcon = copyButton.querySelector('.octicon-check');
+            const copyFeedback = copyButton.nextElementSibling;
+
+            if (currentFeedback && currentFeedback !== copyFeedback) {currentFeedback.style.display = 'none';}
+            currentFeedback = copyFeedback;
+
+            copyIcon.classList.add('d-none');
+            checkIcon.classList.remove('d-none');
+            copyFeedback.style.display = 'block';
+            copyButton.style.borderColor = 'var(--color-success-fg)';
+
+            setTimeout(() => {
+                copyIcon.classList.remove('d-none');
+                checkIcon.classList.add('d-none');
+                copyFeedback.style.display = 'none';
+                copyButton.style.borderColor = '';
+            }, 2000);
+        });
+    });
+});
 
 </script>
 <script src='https://blog.meekdai.com/Gmeek/plugins/GmeekTOC.js'></script><script src='https://blog.meekdai.com/Gmeek/plugins/lightbox.js'></script>
