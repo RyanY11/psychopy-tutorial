@@ -64,4 +64,4 @@ pip install psychopy==2024.2.4
 
 这些安装方式在官网上有[更加详细的说明](https://www.psychopy.org/download.html)，可以参考。
 
-<!-- ##{"timestamp":1733337817}## -->
+<!-- ##{"timestamp":1490764800}## -->
